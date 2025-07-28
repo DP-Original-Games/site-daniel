@@ -1,311 +1,728 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8" />
-<title>Daniel Podaru - Game Developer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="title">Daniel Podaru - Game Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      min-height: 100%;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: url('fantasy_landscape_blur_soft.png') center center/cover no-repeat fixed;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(30,30,30,0.52);
+      backdrop-filter: blur(7px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .container { position: relative; z-index: 1; }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background: rgba(24,24,24,0.88);
+      position: sticky; top: 0; z-index: 10;
+      padding: 12px 28px 12px 28px;
+      box-shadow: 0 2px 18px 0 rgba(0,0,0,0.10);
+      backdrop-filter: blur(4px);
+    }
+    .navbar-center { flex: 1; display: flex; justify-content: center; align-items: center;}
+    .navbar-links {
+      display: flex;
+      gap: 36px;
+    }
+    .navbar-links a {
+      color: #fd9e2e;
+      background: transparent;
+      font-size: 1.05em;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 14px;
+      border-radius: 8px;
+      transition: background 0.18s, color 0.18s;
+      letter-spacing: 1.5px;
+      outline: none;
+      border: none;
+    }
+    .navbar-links a.active,
+    .navbar-links a:hover,
+    .navbar-links a:focus-visible {
+      background: #fd9e2e;
+      color: #232323;
+    }
+    .navbar-lang {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: auto;
+      position: relative;
+      right: 0;
+      background: rgba(30,30,30,0.83);
+      border-radius: 14px;
+      padding: 2px 12px 2px 9px;
+    }
+    .lang-label { font-size: 1.25em; }
+    #lang-select {
+      background: #232323;
+      color: #fd9e2e;
+      border-radius: 8px;
+      border: none;
+      padding: 4px 13px 3px 11px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 1px;
+    }
+    #lang-select:focus, .navbar-lang:focus-within { outline: 2px solid #fd9e2e; }
+    @media (max-width: 900px) {
+      .navbar { flex-direction: column; align-items: stretch; padding: 6px 2vw; }
+      .navbar-center { width: 100%; }
+      .navbar-links { justify-content: center; gap: 17px;}
+      .navbar-lang { margin: 7px auto 3px auto; right: 0; }
+    }
+
+    /* Hero */
+    .hero { text-align: center; margin-top: 30px; margin-bottom: 8px; }
+    .logo-main {
+      width: 98px; height: 98px; margin: 0 auto 18px auto;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.44);
+      border: 3px solid #fd9e2e;
+      box-shadow: 0 0 0 8px rgba(253,158,46,0.10), 0 3px 16px rgba(0,0,0,0.14);
+      transition: box-shadow 0.3s, transform 0.3s;
+      display: block;
+    }
+    .logo-main:hover { box-shadow: 0 0 22px 10px #fd9e2e, 0 3px 16px rgba(0,0,0,0.18); transform: scale(1.07) rotate(-2deg);}
+    .hero h1 {
+      font-size: 2.3em;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 0;
+      letter-spacing: 1.5px;
+      text-shadow: 0 1px 13px #2323233d;
+    }
+    .hero p {
+      color: #eee;
+      font-size: 1.15em;
+      font-weight: 400;
+      margin: 0 0 10px 0;
+      text-shadow: 0 1px 8px #23232320;
+    }
+
+    /* Proiecte */
+    .project-section { margin-bottom: 18px; padding-bottom: 0;}
+    .section-title {
+      color: #fd9e2e;
+      font-size: 1.5em;
+      font-weight: 800;
+      text-align: center;
+      margin: 0 0 20px 0;
+      letter-spacing: 3px;
+    }
+    .project-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px;}
+    .project-card {
+      background: rgba(30,30,30,0.97);
+      border-radius: 18px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.14);
+      padding: 22px 18px 12px 18px;
+      width: 210px;
+      display: flex; flex-direction: column; align-items: center;
+      margin: 0 6px 0 6px;
+      transition: box-shadow 0.19s, transform 0.19s;
+    }
+    .project-card:hover { box-shadow: 0 0 18px 4px #fd9e2e50, 0 1px 16px rgba(0,0,0,0.15); transform: translateY(-5px) scale(1.04);}
+    .project-thumb { width: 56px; height: 56px; margin-bottom: 9px; border-radius: 8px; background: #232323; }
+    .project-info h3 {
+      color: #fff; font-size: 1.08em; font-weight: 700; margin-bottom: 2px; margin-top: 2px; letter-spacing: 1px;
+    }
+    .project-info p {
+      font-size: 0.97em; color: #d9d9d9; margin: 0 0 7px 0;
+    }
+    .techs {
+      display: inline-block; color: #fd9e2e; font-size: 0.98em; font-weight: 600; letter-spacing: 1px;
+      background: rgba(253,158,46,0.07); padding: 3px 9px; border-radius: 6px;
+    }
+
+    /* Contact */
+    .contact-modern {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 360px;
+      margin-top: 10px; margin-bottom: 0;
+    }
+    .contact-modern-card {
+      background: rgba(30,30,30,0.96);
+      border-radius: 32px;
+      box-shadow: 0 2px 32px 0 rgba(0,0,0,0.16);
+      padding: 36px 22px 20px 22px;
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .contact-modern-card h2 {
+      font-size: 2em;
+      margin-bottom: 5px;
+      color: #fd9e2e;
+      font-weight: 700;
+      letter-spacing: 7px;
+      margin-top: 0;
+    }
+    .contact-intro {
+      font-size: 1.03em;
+      margin-bottom: 13px;
+      margin-top: 0;
+      color: #fff;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .contact-modern-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .input-group { width: 100%; margin-bottom: 0;}
+    .contact-modern-form input,
+    .contact-modern-form textarea {
+      width: 100%;
+      padding: 13px 18px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1.05em;
+      background: rgba(255,255,255,0.10);
+      color: #fff;
+      box-shadow: 0 1px 10px 0 rgba(0,0,0,0.09);
+      margin-bottom: 6px;
+      resize: none;
+      text-align: left;
+      box-sizing: border-box;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .contact-modern-form textarea { min-height: 70px; max-height: 220px;}
+    .contact-modern-form button {
+      background: #fd9e2e;
+      color: #fff;
+      font-size: 1.10em;
+      padding: 12px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+      transition: background 0.18s, color 0.18s, transform 0.18s;
+      margin-top: 2px;
+    }
+    .contact-modern-form button:hover {
+      background: #ffb554; color: #232323; transform: scale(1.03);
+    }
+    .contact-socials { margin: 13px 0 7px 0; display: flex; justify-content: center; gap: 17px;}
+    .contact-socials img {
+      width: 35px; height: 35px; border-radius: 50%; background: rgba(255,255,255,0.13);
+      padding: 5px; box-shadow: 0 1px 8px 0 rgba(0,0,0,0.13); transition: background 0.2s, transform 0.2s;
+    }
+    .contact-socials a:hover img { background: #fd9e2e; transform: scale(1.13) rotate(-3deg);}
+    .contact-note { font-size: 0.97em; color: #ffb554; margin-top: 8px; font-style: italic; text-align: center;}
+    @media (max-width: 800px) {
+      .contact-modern-card { max-width: 99vw; padding: 16px 3vw 16px 3vw; border-radius: 14px;}
+      .contact-modern-card h2 { font-size: 1.28em; letter-spacing: 2.5px;}
+      .contact-intro { font-size: 0.99em;}
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 18px 0 8px 0;
+      font-size: 1em;
+      color: #ffb554;
+      background: transparent;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-top: 12px;
+      z-index: 1;
+    }
+    @media (max-width: 600px) {
+      .hero { margin-top: 15px;}
+      .navbar { padding: 5px 1vw;}
+      .container { padding: 0 0 0 0;}
+    }
+  </style>
 </head>
 <body>
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loader-logo"><img src="logo.png" alt="Logo" /></div>
-    <div class="loader-spinner"></div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="#hero" class="active" data-i18n="nav_home">Home</a>
-    <a href="#projects" data-i18n="nav_projects">Proiecte</a>
-    <a href="#videos" data-i18n="nav_videos">Videoclipuri</a>
-    <a href="#players" data-i18n="nav_players">Playeri Online</a>
-    <a href="#contact" data-i18n="nav_contact">Contact</a>
-    <select id="langSelect" aria-label="Select Language"></select>
+  <!-- NAVBAR -->
+ <nav class="navbar">
+  <div class="navbar-center">
+    <div class="navbar-links">
+      <a href="#hero" class="active" data-i18n="nav_home">Home</a>
+      <a href="#projects" data-i18n="nav_projects">Proiecte</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <div class="navbar-lang">
+        <label for="lang-select" class="lang-label">🌍</label>
+        <select id="lang-select">
+        <option value="ro">Română</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+        <option value="zh">中文</option>
+        <option value="ar">العربية</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+        <option value="tr">Türkçe</option>
+        <option value="it">Italiano</option>
+        <option value="pl">Polski</option>
+        <option value="ja">日本語</option>
+        <option value="uk">Українська</option>
+      </select>
+    </div>
   </nav>
-
-  <main class="container">
+  <div class="container">
     <!-- HERO -->
-    <section class="hero" id="hero" tabindex="-1">
-      <img src="logo.png" alt="Logo DP Games" class="logo-main" />
+    <section class="hero" id="hero">
+      <img src="logo.png" alt="DP Logo" class="logo-main" />
       <h1 data-i18n="hero_title">Daniel Podaru - Game Developer</h1>
-      <p data-i18n="hero_desc">
+      <p data-i18n="hero_subtitle">
         Creez experiențe digitale, UI-uri și lumi de joc memorabile. Gândire de viitor, calitate profesională!
       </p>
-      <div class="social-bar" role="region" aria-label="Social media links">
-        <a href="mailto:business@dporiginalgames.eu" title="Trimite email" aria-label="Trimite email prin Gmail">
-          <img src="gmail-icon-transparent-free-png.svg" alt="Gmail" class="icon-svg" />
-        </a>
-        <a href="https://www.instagram.com/dp.original.games/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
-          <img src="Instagram_logo_2022.svg" alt="Instagram" class="icon-svg" />
-        </a>
-        <a href="https://www.youtube.com/@DP_Original" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
-          <img src="yt.svg" alt="YouTube" class="icon-svg" />
-        </a>
-        <a href="https://discord.gg/bgwQFSmU" target="_blank" rel="noopener" title="Discord" aria-label="Discord">
-          <img src="ds.svg" alt="Discord" class="icon-svg" />
-        </a>
-      </div>
     </section>
-
     <!-- PROIECTE -->
     <section class="project-section" id="projects">
       <h2 class="section-title" data-i18n="projects_title">Proiecte recente</h2>
-      <div class="project-list" role="list">
-        <article class="project-card" role="listitem" tabindex="0">
-          <img src="logo.png" alt="Inventory System" class="project-thumb" />
+      <div class="project-list">
+        <div class="project-card">
+          <img src="logo.png" class="project-thumb" alt="Project Thumb" />
           <div class="project-info">
-            <h3>Inventory System UI</h3>
-            <p>
-              Inventar drag & drop custom pentru jocuri tip survival, cu animații și UI adaptiv. Realizat în Unity (C#).
-            </p>
-            <span class="techs">Unity • C# • UI</span>
-            <div class="project-links">
-              <a href="https://www.youtube.com/watch?v=7ZH4G9LmC8g" target="_blank" rel="noopener">YouTube</a>
-            </div>
+            <h3 data-i18n="project1_title">Inventory System UI</h3>
+            <p data-i18n="project1_desc">Inventar drag & drop custom pentru jocuri tip survival, cu animații și UI adaptiv. Realizat în Unity (C#).</p>
+            <span class="techs" data-i18n="project1_techs">Unity • C# • UI</span>
           </div>
-        </article>
-        <article class="project-card" role="listitem" tabindex="0">
-          <img src="logo.png" alt="Character Select" class="project-thumb" />
-          <div class="project-info">
-            <h3>Character Selection</h3>
-            <p>UI animat pentru alegere personaje, cu preview 3D și integrare inventory. Unity & Blender.</p>
-            <span class="techs">Unity • Blender • Anim</span>
-            <div class="project-links">
-              <a href="https://www.youtube.com/watch?v=uNH8p3RvAGs" target="_blank" rel="noopener">YouTube</a>
-            </div>
-          </div>
-        </article>
+        </div>
+        <!-- Poți adăuga alte proiecte aici după model -->
       </div>
     </section>
-
-    <!-- VIDEOCLIPURI -->
-    <section class="video-section" id="videos">
-      <h2 class="video-title" data-i18n="videos_title">Ultimele videoclipuri</h2>
-      <div class="video-list" id="youtube-list" role="list"></div>
-    </section>
-
-    <!-- PLAYERI ONLINE -->
-    <section class="players-section" id="players" aria-live="polite" aria-atomic="true">
-      <h2 class="section-title" data-i18n="players_title">Playeri Online</h2>
-      <div class="players-count" id="playersCount" tabindex="0">0</div>
-    </section>
-
     <!-- CONTACT -->
     <section class="contact-modern" id="contact">
       <div class="contact-modern-card">
-        <h2 data-i18n="contact_title">Contact</h2>
-        <p data-i18n="contact_desc">
-          Ai o idee de colaborare sau întrebări?<br />
+        <h2 data-i18n="contact_title">Contactează-mă</h2>
+        <div class="contact-intro" data-i18n="contact_intro">
+          Ai o idee de colaborare sau întrebări?<br>
           Scrie-mi direct folosind formularul sau pe rețelele sociale:
-        </p>
-        <form
-          action="https://formsubmit.co/business@dporiginalgames.eu"
-          method="POST"
-          class="contact-modern-form"
-          autocomplete="off"
-        >
-          <input type="hidden" name="_next" value="multumesc.html" />
-          <input type="text" name="name" placeholder="Numele tău" required />
-          <input type="email" name="email" placeholder="Emailul tău" required />
-          <textarea name="message" placeholder="Scrie mesajul tău aici..." required></textarea>
-          <button type="submit" data-i18n="contact_btn">Trimite mesajul</button>
+        </div>
+        <form class="contact-modern-form" autocomplete="off">
+          <div class="input-group">
+            <input type="text" name="name" id="input-name" data-i18n-placeholder="contact_name" placeholder="Numele tău" required />
+          </div>
+          <div class="input-group">
+            <input type="email" name="email" id="input-email" data-i18n-placeholder="contact_email" placeholder="Emailul tău" required />
+          </div>
+          <div class="input-group">
+            <textarea name="message" id="input-message" data-i18n-placeholder="contact_message" placeholder="Scrie mesajul tău aici..." required></textarea>
+          </div>
+          <button type="submit" id="send-btn" data-i18n="contact_send">Trimite mesajul</button>
         </form>
         <div class="contact-socials">
-          <a href="mailto:business@dporiginalgames.eu" title="Email direct"
-            ><img src="gmail-icon-transparent-free-png.svg" alt="Gmail" />
-          </a>
-          <a href="https://www.instagram.com/dp.original.games/" target="_blank" rel="noopener" title="Instagram"
-            ><img src="Instagram_logo_2022.svg" alt="Instagram" />
-          </a>
-          <a href="https://www.youtube.com/@DP_Original" target="_blank" rel="noopener" title="YouTube"
-            ><img src="yt.svg" alt="YouTube" />
-          </a>
-          <a href="https://discord.gg/bgwQFSmU" target="_blank" rel="noopener" title="Discord"
-            ><img src="ds.svg" alt="Discord" />
-          </a>
+          <a href="mailto:business@dporiginalgames.eu" target="_blank"><img src="gmail-icon-transparent-free-png.svg" alt="Email" /></a>
+          <a href="https://www.instagram.com/dp.original.games/" target="_blank"><img src="Instagram_logo_2022.svg" alt="Instagram" /></a>
+          <a href="https://www.youtube.com/@dp_original" target="_blank"><img src="yt.svg" alt="YouTube" /></a>
+          <a href="https://www.tiktok.com/@dp.original.games" target="_blank"><img src="tt.svg" alt="TikTok" /></a>
+          <a href="https://discord.gg/bgwQFSmU" target="_blank"><img src="ds.svg" alt="Discord" /></a>
         </div>
-        <div class="contact-note" data-i18n="contact_note">
-          Răspund rapid, de obicei în aceeași zi. Nu ezita să scrii – apreciez orice mesaj!
+        <div class="contact-note" id="contact-note" data-i18n="contact_note">
+          Răspund rapid, de obicei în aceeași zi. Nu ezita să scrii!
         </div>
       </div>
     </section>
-  </main>
+    <!-- FOOTER -->
+    <footer>
+      <span data-i18n="copyright">© 2025 Daniel Podaru – Toate drepturile rezervate.</span>
+    </footer>
+  </div>
+ <script>
+  // === Obiectul de traduceri pentru 15 limbi ===
+  const translations = {
+  ro: {
+    title: "Daniel Podaru - Game Developer",
+    nav_home: "Home",
+    nav_projects: "Proiecte",
+    nav_contact: "Contact",
+    hero_title: "Daniel Podaru - Game Developer",
+    hero_subtitle: "Creez experiențe digitale, UI-uri și lumi de joc memorabile. Gândire de viitor, calitate profesională!",
+    projects_title: "Proiecte recente",
+    project1_title: "Inventory System UI",
+    project1_desc: "Inventar drag & drop custom pentru jocuri tip survival, cu animații și UI adaptiv. Realizat în Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contact",
+    contact_intro: "Ai o idee de colaborare sau întrebări?<br>Scrie-mi direct folosind formularul sau pe rețelele sociale:",
+    contact_name: "Numele tău",
+    contact_email: "Emailul tău",
+    contact_message: "Scrie mesajul tău aici...",
+    contact_send: "Trimite mesajul",
+    contact_note: "Răspund rapid, de obicei în aceeași zi. Nu ezita să scrii!",
+    copyright: "© 2025 Daniel Podaru – Toate drepturile rezervate."
+  },
+  en: {
+    title: "Daniel Podaru - Game Developer",
+    nav_home: "Home",
+    nav_projects: "Projects",
+    nav_contact: "Contact",
+    hero_title: "Daniel Podaru - Game Developer",
+    hero_subtitle: "I create digital experiences, memorable UIs and game worlds. Future-thinking, professional quality!",
+    projects_title: "Recent Projects",
+    project1_title: "Inventory System UI",
+    project1_desc: "Custom drag & drop inventory for survival games, with animations and adaptive UI. Made in Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contact",
+    contact_intro: "Do you have a collaboration idea or questions?<br>Write to me directly using the form or social networks:",
+    contact_name: "Your name",
+    contact_email: "Your email",
+    contact_message: "Write your message here...",
+    contact_send: "Send message",
+    contact_note: "I usually reply the same day. Don't hesitate to write!",
+    copyright: "© 2025 Daniel Podaru – All rights reserved."
+  },
+  es: {
+    title: "Daniel Podaru - Desarrollador de Juegos",
+    nav_home: "Inicio",
+    nav_projects: "Proyectos",
+    nav_contact: "Contacto",
+    hero_title: "Daniel Podaru - Desarrollador de Juegos",
+    hero_subtitle: "Creo experiencias digitales, UIs y mundos de juego memorables. ¡Visión de futuro, calidad profesional!",
+    projects_title: "Proyectos recientes",
+    project1_title: "Sistema de Inventario UI",
+    project1_desc: "Inventario drag & drop personalizado para juegos de supervivencia, con animaciones y UI adaptativo. Realizado en Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contacto",
+    contact_intro: "¿Tienes una idea de colaboración o preguntas?<br>Escríbeme directamente usando el formulario o redes sociales:",
+    contact_name: "Tu nombre",
+    contact_email: "Tu correo electrónico",
+    contact_message: "Escribe tu mensaje aquí...",
+    contact_send: "Enviar mensaje",
+    contact_note: "Respondo rápido, normalmente el mismo día. ¡No dudes en escribir!",
+    copyright: "© 2025 Daniel Podaru – Todos los derechos reservados."
+  },
+  fr: {
+    title: "Daniel Podaru - Développeur de Jeux",
+    nav_home: "Accueil",
+    nav_projects: "Projets",
+    nav_contact: "Contact",
+    hero_title: "Daniel Podaru - Développeur de Jeux",
+    hero_subtitle: "Je crée des expériences numériques, des UI et des mondes de jeu mémorables. Vision d'avenir, qualité professionnelle !",
+    projects_title: "Projets récents",
+    project1_title: "Système d'inventaire UI",
+    project1_desc: "Inventaire drag & drop personnalisé pour jeux de survie, avec animations et UI adaptatif. Réalisé sous Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contact",
+    contact_intro: "Vous avez une idée de collaboration ou des questions ?<br>Écrivez-moi directement via le formulaire ou les réseaux sociaux :",
+    contact_name: "Votre nom",
+    contact_email: "Votre email",
+    contact_message: "Écrivez votre message ici...",
+    contact_send: "Envoyer le message",
+    contact_note: "Je réponds rapidement, généralement le même jour. N'hésitez pas à écrire !",
+    copyright: "© 2025 Daniel Podaru – Tous droits réservés."
+  },
+  de: {
+    title: "Daniel Podaru – Spieleentwickler",
+    nav_home: "Home",
+    nav_projects: "Projekte",
+    nav_contact: "Kontakt",
+    hero_title: "Daniel Podaru – Spieleentwickler",
+    hero_subtitle: "Ich erschaffe digitale Erlebnisse, UIs und Spielwelten mit Zukunftsvision und professioneller Qualität!",
+    projects_title: "Neueste Projekte",
+    project1_title: "Inventar-System UI",
+    project1_desc: "Individuelles Drag & Drop-Inventar für Survival-Games, mit Animationen und adaptivem UI. Erstellt in Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Kontakt",
+    contact_intro: "Haben Sie eine Kooperationsidee oder Fragen?<br>Schreiben Sie mir direkt über das Formular oder soziale Netzwerke:",
+    contact_name: "Ihr Name",
+    contact_email: "Ihre E-Mail",
+    contact_message: "Schreiben Sie hier Ihre Nachricht...",
+    contact_send: "Nachricht senden",
+    contact_note: "Ich antworte in der Regel am selben Tag. Zögern Sie nicht zu schreiben!",
+    copyright: "© 2025 Daniel Podaru – Alle Rechte vorbehalten."
+  },
+  ru: {
+    title: "Даниэль Подару – Разработчик игр",
+    nav_home: "Главная",
+    nav_projects: "Проекты",
+    nav_contact: "Контакт",
+    hero_title: "Даниэль Подару – Разработчик игр",
+    hero_subtitle: "Создаю цифровые продукты, UI и игровые миры. Мышление будущего, профессиональное качество!",
+    projects_title: "Недавние проекты",
+    project1_title: "UI системы инвентаря",
+    project1_desc: "Пользовательский drag & drop инвентарь для survival-игр, с анимациями и адаптивным UI. Реализовано на Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Контакт",
+    contact_intro: "Есть идея для сотрудничества или вопросы?<br>Пишите напрямую через форму или в соцсетях:",
+    contact_name: "Ваше имя",
+    contact_email: "Ваш email",
+    contact_message: "Напишите ваше сообщение здесь...",
+    contact_send: "Отправить сообщение",
+    contact_note: "Отвечаю быстро, обычно в тот же день. Не стесняйтесь писать!",
+    copyright: "© 2025 Daniel Podaru – Все права защищены."
+  },
+  zh: {
+    title: "丹尼尔·波达鲁 - 游戏开发者",
+    nav_home: "主页",
+    nav_projects: "项目",
+    nav_contact: "联系",
+    hero_title: "丹尼尔·波达鲁 - 游戏开发者",
+    hero_subtitle: "我创造数字体验、UI 和令人难忘的游戏世界。前瞻思维，专业品质！",
+    projects_title: "最新项目",
+    project1_title: "物品栏系统UI",
+    project1_desc: "为生存类游戏打造的自定义拖拽物品栏，带动画和自适应UI。基于Unity (C#)。",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "联系",
+    contact_intro: "有合作想法或问题吗？<br>请通过表单或社交网络直接联系我：",
+    contact_name: "你的名字",
+    contact_email: "你的邮箱",
+    contact_message: "在这里写下你的消息...",
+    contact_send: "发送消息",
+    contact_note: "我通常会在当天回复。欢迎随时联系！",
+    copyright: "© 2025 Daniel Podaru – 保留所有权利。"
+  },
+  ar: {
+    title: "دانيال بودارو - مطور ألعاب",
+    nav_home: "الرئيسية",
+    nav_projects: "المشاريع",
+    nav_contact: "تواصل",
+    hero_title: "دانيال بودارو - مطور ألعاب",
+    hero_subtitle: "أصنع تجارب رقمية وواجهات وعوالم ألعاب لا تُنسى. تفكير مستقبلي، جودة احترافية!",
+    projects_title: "أحدث المشاريع",
+    project1_title: "واجهة نظام الجرد",
+    project1_desc: "نظام جرد drag & drop مخصص لألعاب البقاء، مع حركات وواجهة قابلة للتكيف. مُنفذ بـ Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "تواصل",
+    contact_intro: "هل لديك فكرة للتعاون أو استفسار؟<br>تواصل معي مباشرة عبر النموذج أو الشبكات الاجتماعية:",
+    contact_name: "اسمك",
+    contact_email: "بريدك الإلكتروني",
+    contact_message: "اكتب رسالتك هنا...",
+    contact_send: "إرسال الرسالة",
+    contact_note: "أرد سريعًا، غالبًا في نفس اليوم. لا تتردد في الكتابة!",
+    copyright: "© 2025 دانيال بودارو – جميع الحقوق محفوظة."
+  },
+  pt: {
+    title: "Daniel Podaru - Desenvolvedor de Jogos",
+    nav_home: "Início",
+    nav_projects: "Projetos",
+    nav_contact: "Contato",
+    hero_title: "Daniel Podaru - Desenvolvedor de Jogos",
+    hero_subtitle: "Crio experiências digitais, UIs e mundos de jogos memoráveis. Visão de futuro, qualidade profissional!",
+    projects_title: "Projetos recentes",
+    project1_title: "UI do Sistema de Inventário",
+    project1_desc: "Inventário drag & drop personalizado para jogos survival, com animações e UI adaptativo. Feito em Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contato",
+    contact_intro: "Tem uma ideia de colaboração ou perguntas?<br>Fale comigo diretamente pelo formulário ou redes sociais:",
+    contact_name: "Seu nome",
+    contact_email: "Seu e-mail",
+    contact_message: "Escreva sua mensagem aqui...",
+    contact_send: "Enviar mensagem",
+    contact_note: "Respondo rápido, geralmente no mesmo dia. Não hesite em escrever!",
+    copyright: "© 2025 Daniel Podaru – Todos os direitos reservados."
+  },
+  hi: {
+    title: "डैनियल पोदारु - गेम डेवलपर",
+    nav_home: "होम",
+    nav_projects: "प्रोजेक्ट्स",
+    nav_contact: "संपर्क",
+    hero_title: "डैनियल पोदारु - गेम डेवलपर",
+    hero_subtitle: "मैं डिजिटल अनुभव, UI और यादगार गेम वर्ल्ड बनाता हूं। भविष्य की सोच, प्रोफेशनल क्वालिटी!",
+    projects_title: "हाल के प्रोजेक्ट्स",
+    project1_title: "इन्वेंटरी सिस्टम UI",
+    project1_desc: "सर्वाइवल गेम्स के लिए कस्टम ड्रैग एंड ड्रॉप इन्वेंटरी, ऐनिमेशन और अडैप्टिव UI के साथ। Unity (C#) में बनाया गया।",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "संपर्क",
+    contact_intro: "सहयोग का विचार या प्रश्न हैं?<br>मुझसे सीधे फॉर्म या सोशल मीडिया से संपर्क करें:",
+    contact_name: "आपका नाम",
+    contact_email: "आपका ईमेल",
+    contact_message: "अपना संदेश यहाँ लिखें...",
+    contact_send: "संदेश भेजें",
+    contact_note: "मैं आमतौर पर उसी दिन उत्तर देता हूँ। लिखने में संकोच न करें!",
+    copyright: "© 2025 डैनियल पोदारु – सर्वाधिकार सुरक्षित।"
+  },
+  tr: {
+    title: "Daniel Podaru - Oyun Geliştirici",
+    nav_home: "Anasayfa",
+    nav_projects: "Projeler",
+    nav_contact: "İletişim",
+    hero_title: "Daniel Podaru - Oyun Geliştirici",
+    hero_subtitle: "Dijital deneyimler, unutulmaz arayüzler ve oyun dünyaları oluşturuyorum. Gelecek odaklı, profesyonel kalite!",
+    projects_title: "Son Projeler",
+    project1_title: "Envanter Sistemi UI",
+    project1_desc: "Hayatta kalma oyunları için özel drag & drop envanter, animasyonlar ve uyarlanabilir UI ile. Unity (C#) ile yapıldı.",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "İletişim",
+    contact_intro: "Bir işbirliği fikriniz veya sorunuz mu var?<br>Doğrudan form veya sosyal ağlar aracılığıyla yazın:",
+    contact_name: "Adınız",
+    contact_email: "E-posta adresiniz",
+    contact_message: "Mesajınızı buraya yazın...",
+    contact_send: "Mesajı gönder",
+    contact_note: "Genellikle aynı gün cevap veriyorum. Yazmaktan çekinmeyin!",
+    copyright: "© 2025 Daniel Podaru – Tüm hakları saklıdır."
+  },
+  it: {
+    title: "Daniel Podaru - Sviluppatore di Giochi",
+    nav_home: "Home",
+    nav_projects: "Progetti",
+    nav_contact: "Contatto",
+    hero_title: "Daniel Podaru - Sviluppatore di Giochi",
+    hero_subtitle: "Creo esperienze digitali, UI e mondi di gioco memorabili. Visione futura, qualità professionale!",
+    projects_title: "Progetti recenti",
+    project1_title: "Sistema Inventario UI",
+    project1_desc: "Inventario drag & drop personalizzato per giochi survival, con animazioni e UI adattivo. Realizzato in Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Contatto",
+    contact_intro: "Hai un'idea di collaborazione o domande?<br>Scrivimi direttamente tramite il modulo o sui social:",
+    contact_name: "Il tuo nome",
+    contact_email: "La tua email",
+    contact_message: "Scrivi qui il tuo messaggio...",
+    contact_send: "Invia messaggio",
+    contact_note: "Rispondo rapidamente, di solito lo stesso giorno. Non esitare a scrivere!",
+    copyright: "© 2025 Daniel Podaru – Tutti i diritti riservati."
+  },
+  pl: {
+    title: "Daniel Podaru - Twórca Gier",
+    nav_home: "Strona główna",
+    nav_projects: "Projekty",
+    nav_contact: "Kontakt",
+    hero_title: "Daniel Podaru - Twórca Gier",
+    hero_subtitle: "Tworzę cyfrowe doświadczenia, UI oraz niezapomniane światy gier. Myślenie przyszłościowe, profesjonalna jakość!",
+    projects_title: "Najnowsze projekty",
+    project1_title: "System Ekwipunku UI",
+    project1_desc: "Niestandardowy ekwipunek typu drag & drop do gier survival, z animacjami i adaptacyjnym UI. Wykonane w Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Kontakt",
+    contact_intro: "Masz pomysł na współpracę lub pytania?<br>Napisz bezpośrednio przez formularz lub media społecznościowe:",
+    contact_name: "Twoje imię",
+    contact_email: "Twój email",
+    contact_message: "Napisz swoją wiadomość tutaj...",
+    contact_send: "Wyślij wiadomość",
+    contact_note: "Odpowiadam szybko, zwykle tego samego dnia. Nie wahaj się napisać!",
+    copyright: "© 2025 Daniel Podaru – Wszelkie prawa zastrzeżone."
+  },
+  ja: {
+    title: "ダニエル・ポダル - ゲーム開発者",
+    nav_home: "ホーム",
+    nav_projects: "プロジェクト",
+    nav_contact: "お問い合わせ",
+    hero_title: "ダニエル・ポダル - ゲーム開発者",
+    hero_subtitle: "デジタル体験、UI、忘れられないゲームワールドを創造します。未来志向、プロ品質！",
+    projects_title: "最新プロジェクト",
+    project1_title: "インベントリシステムUI",
+    project1_desc: "サバイバルゲーム用カスタムドラッグ&ドロップインベントリ。アニメーションと適応型UI付き。Unity (C#) 開発。",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "お問い合わせ",
+    contact_intro: "コラボのアイデアや質問がありますか？<br>フォームまたはSNSから直接ご連絡ください：",
+    contact_name: "お名前",
+    contact_email: "メールアドレス",
+    contact_message: "ここにメッセージを書いてください...",
+    contact_send: "メッセージ送信",
+    contact_note: "通常は同じ日に返信します。お気軽にご連絡ください！",
+    copyright: "© 2025 Daniel Podaru – 無断転載を禁じます。"
+  },
+  uk: {
+    title: "Даніель Подару – Розробник ігор",
+    nav_home: "Головна",
+    nav_projects: "Проекти",
+    nav_contact: "Контакт",
+    hero_title: "Даніель Подару – Розробник ігор",
+    hero_subtitle: "Створюю цифрові досвіди, UI та незабутні ігрові світи. Думка на майбутнє, професійна якість!",
+    projects_title: "Останні проекти",
+    project1_title: "Система інвентарю UI",
+    project1_desc: "Кастомний drag & drop інвентар для survival-ігор, з анімаціями та адаптивним UI. Реалізовано в Unity (C#).",
+    project1_techs: "Unity • C# • UI",
+    contact_title: "Контакт",
+    contact_intro: "Є ідея для співпраці чи питання?<br>Напишіть мені через форму або в соцмережах:",
+    contact_name: "Ваше ім'я",
+    contact_email: "Ваш email",
+    contact_message: "Напишіть ваше повідомлення тут...",
+    contact_send: "Надіслати повідомлення",
+    contact_note: "Відповідаю швидко, зазвичай того ж дня. Не соромтеся писати!",
+    copyright: "© 2025 Daniel Podaru – Всі права захищені."
+  }
+};
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Daniel Podaru – Game Developer
-  </footer>
 
-  <!-- Background Music (loop) -->
-  <audio id="bgmusic" loop>
-    <source src="'Omega' [Emotional Hybrid Orchestra CC-BY] - Scott Buckley.mp3" type="audio/mpeg" />
-  </audio>
-  <button class="music-player-btn" id="musicBtn" aria-label="Muzică pornită/oprită">
-    <span id="musicIcon">🔈</span>
-  </button>
-
-  <script>
-    // Loader
-    window.addEventListener("load", () => {
-      const loader = document.getElementById("loader");
-      loader.style.opacity = 0;
-      loader.style.visibility = "hidden";
-      setTimeout(() => loader.remove(), 700);
-    });
-
-    // Navbar active link on scroll
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".navbar a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 80;
-        if (pageYOffset >= sectionTop) current = section.getAttribute("id");
-      });
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) link.classList.add("active");
-      });
-    });
-
-    // Background music toggle
-    const bgmusic = document.getElementById("bgmusic");
-    const musicBtn = document.getElementById("musicBtn");
-    const musicIcon = document.getElementById("musicIcon");
-    let isPlaying = false;
-
-    function toggleMusic() {
-      if (isPlaying) {
-        bgmusic.pause();
-        musicIcon.textContent = "🔈";
-        isPlaying = false;
-      } else {
-        bgmusic.volume = 0.5;
-        bgmusic.play();
-        musicIcon.textContent = "🔊";
-        isPlaying = true;
+  // === Traducere automată ===
+  function translate(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+        if (el.tagName.toLowerCase() === "title") document.title = translations[lang][key];
       }
-    }
-    musicBtn.onclick = toggleMusic;
-    document.body.addEventListener(
-      "click",
-      function onFirstClick() {
-        if (!isPlaying) {
-          toggleMusic();
-          document.body.removeEventListener("click", onFirstClick);
+    });
+    // Placeholder-uri pentru inputuri/textarea
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang] && translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+      }
+    });
+  }
+
+  // === Selector limbă + persistentă ===
+  const langSelect = document.getElementById('lang-select');
+  const savedLang = localStorage.getItem('siteLang') || 'ro';
+  langSelect.value = savedLang;
+  translate(savedLang);
+  langSelect.addEventListener('change', e => {
+    const lang = e.target.value;
+    translate(lang);
+    localStorage.setItem('siteLang', lang);
+    document.documentElement.lang = lang;
+  });
+
+  // === Navbar highlight activ ===
+  const navLinks = document.querySelectorAll('.navbar-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  // === Auto-highlight la scroll ===
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY || document.documentElement.scrollTop;
+    navLinks.forEach(link => {
+      const ref = link.getAttribute('href');
+      if (ref && ref.startsWith('#') && document.querySelector(ref)) {
+        const section = document.querySelector(ref);
+        if (section.offsetTop - 80 <= scrollPos && section.offsetTop + section.offsetHeight - 80 > scrollPos) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
         }
-      },
-      { once: true }
-    );
-
-    // YouTube videos list
-    const ytVideos = [
-      { id: "7ZH4G9LmC8g", title: "Unity Inventory Drag & Drop" },
-      { id: "bJrRXfaGz58", title: "Game UI in Unity – Tips & Tricks" },
-      { id: "8ZghDFKyrT4", title: "RPG Character Select Screen" },
-      { id: "uNH8p3RvAGs", title: "Top 5 UI Animation Effects" },
-      { id: "EoGS4yAizbA", title: "Design Fantasy Inventory" },
-    ];
-    const ytContainer = document.getElementById("youtube-list");
-    ytVideos.forEach((video) => {
-      ytContainer.innerHTML += `
-        <a class="video-card" href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" class="video-thumb" />
-          <div class="video-info">
-            <span class="yt-icon">▶️</span>
-            <h3>${video.title}</h3>
-          </div>
-        </a>
-      `;
+      }
     });
+  });
 
-    // Players online dynamic count (example static, update with real API if needed)
-    const playersCountElem = document.getElementById("playersCount");
-    let playersCount = 128; // Example static count
-    function updatePlayersCount() {
-      playersCountElem.textContent = playersCount.toLocaleString();
-    }
-    updatePlayersCount();
-
-    // Translation dictionary
-    const translations = {
-      ro: {
-        nav_home: "Home",
-        nav_projects: "Proiecte",
-        nav_videos: "Videoclipuri",
-        nav_players: "Playeri Online",
-        nav_contact: "Contact",
-        hero_title: "Daniel Podaru - Game Developer",
-        hero_desc:
-          "Creez experiențe digitale, UI-uri și lumi de joc memorabile. Gândire de viitor, calitate profesională!",
-        projects_title: "Proiecte recente",
-        videos_title: "Ultimele videoclipuri",
-        players_title: "Playeri Online",
-        contact_title: "Contact",
-        contact_desc:
-          "Ai o idee de colaborare sau întrebări?<br />Scrie-mi direct folosind formularul sau pe rețelele sociale:",
-        contact_btn: "Trimite mesajul",
-        contact_note:
-          "Răspund rapid, de obicei în aceeași zi. Nu ezita să scrii – apreciez orice mesaj!",
-      },
-      en: {
-        nav_home: "Home",
-        nav_projects: "Projects",
-        nav_videos: "Videos",
-        nav_players: "Online Players",
-        nav_contact: "Contact",
-        hero_title: "Daniel Podaru - Game Developer",
-        hero_desc:
-          "I create digital experiences, UI and memorable game worlds. Forward thinking, professional quality!",
-        projects_title: "Recent Projects",
-        videos_title: "Latest Videos",
-        players_title: "Online Players",
-        contact_title: "Contact",
-        contact_desc: "Got a collaboration idea or questions? Write me directly using the form or socials:",
-        contact_btn: "Send message",
-        contact_note: "I reply fast, usually the same day. Don't hesitate to write – I appreciate every message!",
-      },
-      // add other languages here...
-    };
-
-    // Supported languages list
-    const supportedLangs = ["ro", "en", "es", "zh", "ar", "hi", "fr", "de", "ru", "pt", "ja", "it", "ko", "tr", "nl"];
-
-    // Language selector setup
-    const langSelect = document.getElementById("langSelect");
-    function populateLangSelector() {
-      supportedLangs.forEach((lang) => {
-        const option = document.createElement("option");
-        option.value = lang;
-        option.textContent = lang.toUpperCase();
-        langSelect.appendChild(option);
-      });
-    }
-    function setLanguage(lang) {
-      if (!supportedLangs.includes(lang)) lang = "en";
-      langSelect.value = lang;
-      applyTranslations(lang);
-    }
-    function applyTranslations(lang) {
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-    }
-    langSelect.addEventListener("change", () => {
-      const selectedLang = langSelect.value;
-      setLanguage(selectedLang);
+  // === Simulare trimis formular (demo, elimină dacă folosești form real) ===
+  const contactForm = document.querySelector('.contact-modern-form');
+  if(contactForm) {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert(translations[langSelect.value]?.contact_note || "Mesaj trimis! Vă voi răspunde cât mai repede.");
+      contactForm.reset();
     });
-    window.addEventListener("load", () => {
-      populateLangSelector();
-      let userLang = navigator.language || navigator.userLanguage;
-      userLang = userLang.split("-")[0].toLowerCase();
-      if (!supportedLangs.includes(userLang)) userLang = "en";
-      setLanguage(userLang);
-    });
-  </script>
-</body>
-</html>
+  }
+</script>
+
