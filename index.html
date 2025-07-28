@@ -70,13 +70,6 @@
         &copy; 2025 Daniel Podaru – Game Developer
     </footer>
 
-    <!-- MUZICA DE FUNDAL -->
-    <audio id="bgmusic" loop>
-        <source src="'Omega' [Emotional Hybrid Orchestra CC-BY] - Scott Buckley.mp3" type="audio/mpeg">
-    </audio>
-    <button class="music-player-btn" id="musicBtn" aria-label="Muzică pornită/oprită">
-        <span id="musicIcon">🔈</span>
-    </button>
 
     <script>
         // Loader animat
@@ -103,31 +96,6 @@
             });
         };
 
-        // Muzica background (loop e deja setat)
-        const bgmusic = document.getElementById('bgmusic');
-        const musicBtn = document.getElementById('musicBtn');
-        const musicIcon = document.getElementById('musicIcon');
-        let isPlaying = false;
-
-        function toggleMusic() {
-            if (isPlaying) {
-                bgmusic.pause();
-                musicIcon.textContent = '🔈';
-                isPlaying = false;
-            } else {
-                bgmusic.volume = 0.5;
-                bgmusic.play();
-                musicIcon.textContent = '🔊';
-                isPlaying = true;
-            }
-        }
-        musicBtn.onclick = toggleMusic;
-        document.body.addEventListener('click', function onFirstClick() {
-            if (!isPlaying) {
-                toggleMusic();
-                document.body.removeEventListener('click', onFirstClick);
-            }
-        }, { once: true });
 
         // ------- YOUTUBE VIDEO LIST -------
         // Adaugă ID-urile aici, poți adăuga câte vrei (ultimele sus)
