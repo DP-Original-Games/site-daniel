@@ -73,6 +73,13 @@
       margin-right: 20px;
       cursor: pointer;
     }
+    #redirect-msg {
+      display: none;
+      margin-top: 15px;
+      font-size: 1.08em;
+      color: #fd9e2e;
+      font-weight: bold;
+    }
     @media (max-width:500px) {
       .download-box { max-width: 98vw; padding: 20px 4vw; }
       .download-btn { font-size: 1.05em; padding: 13px 16vw; }
@@ -96,7 +103,7 @@
       <option value="tr">Türkçe</option>
       <option value="ar">العربية</option>
       <option value="zh">中文</option>
-      <option value="ja">日本語</option>
+      <option value="ja">日本語</option>
       <option value="pt">Português</option>
       <option value="hi">हिन्दी</option>
       <option value="pl">Polski</option>
@@ -109,7 +116,8 @@
       Plata ta a fost procesată cu succes.<br>
       Apasă pe butonul de mai jos pentru a descărca scriptul tău:
     </p>
-    <a class="download-btn" data-i18n="download_btn" href="FirstPersonMovement.cs" download>Descarcă scriptul</a>
+    <button id="download-btn" class="download-btn" data-i18n="download_btn">Descarcă scriptul</button>
+    <p id="redirect-msg" data-i18n="redirecting_msg">Redirecționare către pagina principală...</p>
     <p style="font-size:0.93em;color:#ffb554;margin-top:20px;">
       <span data-i18n="contact_support">Dacă ai probleme la descărcare, scrie la</span><br>
       <a href="mailto:business@dporiginalgames.eu" style="color:#fd9e2e;">business@dporiginalgames.eu</a>
@@ -120,7 +128,28 @@
   </div>
   <script src="translations.js"></script>
   <script>
-    initI18n('lang-switcher');
+    // Inițializează traducerile (ex: initI18n('lang-switcher');)
+    if (typeof initI18n === 'function') {
+      initI18n('lang-switcher');
+    }
+
+    document.getElementById('download-btn').onclick = function () {
+      // Descarcă fișierul .cs
+      const link = document.createElement('a');
+      link.href = 'FirstPersonMovement.cs';
+      link.download = 'FirstPersonMovement.cs';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Arată mesajul de redirect
+      document.getElementById('redirect-msg').style.display = 'block';
+
+      // După 1 secundă mergi la homepage
+      setTimeout(function () {
+        window.location.href = 'index.html';
+      }, 1000);
+    };
   </script>
 </body>
 </html>
