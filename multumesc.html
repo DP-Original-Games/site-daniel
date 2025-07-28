@@ -1,130 +1,209 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mulțumesc pentru mesaj!</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
-<style>
-  html, body {
-    margin: 0; padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: url('fantasy_landscape_blur_soft.png') center center/cover no-repeat fixed;
-    color: #fff;
-    position: relative;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(30,30,30,0.55);
-    backdrop-filter: blur(8px);
-    z-index: 0;
-    pointer-events: none;
-  }
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 420px;
-    width: 90vw;
-    background: rgba(30,30,30,0.9);
-    border-radius: 24px;
-    box-shadow: 0 6px 34px rgba(0,0,0,0.25);
-    padding: 44px 32px;
-    margin: 10vh auto;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease forwards;
-  }
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="thanks_title">Mulțumesc pentru mesaj!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: url('fantasy_landscape_blur_soft.png') center center/cover no-repeat fixed;
+      color: #fff;
+      position: relative;
     }
-  }
-  .logo-main {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 24px auto;
-    border-radius: 18px;
-    background: rgba(0,0,0,0.4);
-    border: 3px solid #fd9e2e;
-    box-shadow:
-      0 0 0 8px rgba(253,158,46,0.1),
-      0 3px 16px rgba(0,0,0,0.14);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    display: block;
-  }
-  .logo-main:hover {
-    box-shadow:
-      0 0 22px 10px #fd9e2e,
-      0 3px 16px rgba(0,0,0,0.18);
-    transform: scale(1.1) rotate(-2deg);
-  }
-  h1 {
-    font-size: 2.2rem;
-    margin-bottom: 16px;
-    color: #fd9e2e;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-  }
-  p {
-    font-size: 1.08rem;
-    line-height: 1.5;
-    margin-bottom: 40px;
-    color: #eee;
-  }
-  .btn-back {
-    background: #fd9e2e;
-    color: #1d1d1d;
-    font-size: 1.15rem;
-    font-weight: 700;
-    padding: 16px 48px;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(253,158,46,0.5);
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.25s ease, transform 0.2s ease;
-  }
-  .btn-back:hover {
-    background-color: #ffb554;
-    color: #222;
-    transform: scale(1.05);
-  }
-  @media (max-width: 480px) {
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(30,30,30,0.55);
+      backdrop-filter: blur(8px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .lang-bar {
+      position: absolute;
+      right: 32px; top: 22px; z-index: 9;
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(30,30,30,0.8);
+      border-radius: 14px;
+      padding: 2px 14px;
+      font-size: 1.05em;
+    }
+    .lang-label { font-size: 1.25em; }
+    #lang-select { background: #232323; color: #fd9e2e; border-radius: 8px; border: none; padding: 3px 10px; }
     .container {
-      padding: 32px 22px;
-      margin: 8vh auto;
+      position: relative;
+      z-index: 1;
+      max-width: 420px;
+      width: 90vw;
+      background: rgba(30,30,30,0.9);
+      border-radius: 24px;
+      box-shadow: 0 6px 34px rgba(0,0,0,0.25);
+      padding: 44px 32px;
+      margin: 12vh auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
     }
-    h1 {
-      font-size: 1.8rem;
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    .logo-main {
+      width: 80px; height: 80px; margin: 0 auto 24px auto; border-radius: 18px;
+      background: rgba(0,0,0,0.4); border: 3px solid #fd9e2e;
+      box-shadow: 0 0 0 8px rgba(253,158,46,0.1), 0 3px 16px rgba(0,0,0,0.14);
+      transition: box-shadow 0.3s, transform 0.3s; display: block;
     }
-    p {
-      font-size: 1rem;
-      margin-bottom: 32px;
-    }
+    .logo-main:hover { box-shadow: 0 0 22px 10px #fd9e2e, 0 3px 16px rgba(0,0,0,0.18); transform: scale(1.1) rotate(-2deg); }
+    h1 { font-size: 2.2rem; margin-bottom: 16px; color: #fd9e2e; font-weight: 700; letter-spacing: 1.5px; }
+    p { font-size: 1.08rem; line-height: 1.5; margin-bottom: 40px; color: #eee; }
     .btn-back {
-      padding: 14px 36px;
-      font-size: 1.05rem;
+      background: #fd9e2e; color: #1d1d1d; font-size: 1.15rem; font-weight: 700; padding: 16px 48px;
+      border: none; border-radius: 14px; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(253,158,46,0.5);
+      text-decoration: none; display: inline-block;
+      transition: background-color 0.25s, transform 0.2s;
     }
-  }
-</style>
+    .btn-back:hover { background-color: #ffb554; color: #222; transform: scale(1.05); }
+    @media (max-width: 480px) {
+      .container { padding: 32px 8vw; margin: 8vh auto; }
+      h1 { font-size: 1.3rem; }
+      .lang-bar { right: 8px; top: 8px; }
+      .btn-back { padding: 12px 24px; font-size: 0.98rem; }
+    }
+  </style>
 </head>
 <body>
+  <div class="lang-bar">
+    <label for="lang-select" class="lang-label">🌍</label>
+    <select id="lang-select">
+      <option value="ro">Română</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="ru">Русский</option>
+      <option value="zh">中文</option>
+      <option value="ar">العربية</option>
+      <option value="pt">Português</option>
+      <option value="hi">हिन्दी</option>
+      <option value="tr">Türkçe</option>
+      <option value="it">Italiano</option>
+      <option value="pl">Polski</option>
+      <option value="ja">日本語</option>
+      <option value="uk">Українська</option>
+    </select>
+  </div>
   <div class="container" role="main" aria-live="polite" aria-label="Mulțumire pentru mesaj">
     <img src="logo.png" alt="Logo DP Games" class="logo-main" />
-    <h1>Mulțumesc pentru mesaj!</h1>
-    <p>
+    <h1 data-i18n="thanks_title">Mulțumesc pentru mesaj!</h1>
+    <p data-i18n="thanks_text">
       Mesajul tău a fost trimis cu succes.<br />
       Te voi contacta în cel mai scurt timp posibil.<br /><br />
       Între timp, poți reveni pe pagina principală:
     </p>
-    <a href="index.html" class="btn-back" aria-label="Înapoi la pagina principală">Înapoi la homepage</a>
+    <a href="index.html" class="btn-back" data-i18n="thanks_btn">Înapoi la homepage</a>
   </div>
+  <script>
+    const translations = {
+      ro: {
+        thanks_title: "Mulțumesc pentru mesaj!",
+        thanks_text: "Mesajul tău a fost trimis cu succes.<br />Te voi contacta în cel mai scurt timp posibil.<br /><br />Între timp, poți reveni pe pagina principală:",
+        thanks_btn: "Înapoi la homepage"
+      },
+      en: {
+        thanks_title: "Thank you for your message!",
+        thanks_text: "Your message was sent successfully.<br />I will contact you as soon as possible.<br /><br />Meanwhile, you can return to the homepage:",
+        thanks_btn: "Back to homepage"
+      },
+      es: {
+        thanks_title: "¡Gracias por tu mensaje!",
+        thanks_text: "Tu mensaje se ha enviado correctamente.<br />Te contactaré lo antes posible.<br /><br />Mientras tanto, puedes volver a la página principal:",
+        thanks_btn: "Volver al inicio"
+      },
+      fr: {
+        thanks_title: "Merci pour votre message !",
+        thanks_text: "Votre message a été envoyé avec succès.<br />Je vous contacterai dès que possible.<br /><br />En attendant, vous pouvez retourner à la page d'accueil :",
+        thanks_btn: "Retour à l'accueil"
+      },
+      de: {
+        thanks_title: "Vielen Dank für Ihre Nachricht!",
+        thanks_text: "Ihre Nachricht wurde erfolgreich gesendet.<br />Ich werde Sie so schnell wie möglich kontaktieren.<br /><br />In der Zwischenzeit können Sie zur Startseite zurückkehren:",
+        thanks_btn: "Zurück zur Startseite"
+      },
+      ru: {
+        thanks_title: "Спасибо за ваше сообщение!",
+        thanks_text: "Ваше сообщение успешно отправлено.<br />Я свяжусь с вами в ближайшее время.<br /><br />Тем временем вы можете вернуться на главную страницу:",
+        thanks_btn: "Вернуться на главную"
+      },
+      zh: {
+        thanks_title: "感谢您的留言！",
+        thanks_text: "您的信息已成功发送。<br />我会尽快与您联系。<br /><br />同时，您可以返回主页：",
+        thanks_btn: "返回主页"
+      },
+      ar: {
+        thanks_title: "شكرًا لرسالتك!",
+        thanks_text: "تم إرسال رسالتك بنجاح.<br />سأتواصل معك في أقرب وقت ممكن.<br /><br />وفي غضون ذلك، يمكنك العودة إلى الصفحة الرئيسية:",
+        thanks_btn: "العودة للرئيسية"
+      },
+      pt: {
+        thanks_title: "Obrigado pela mensagem!",
+        thanks_text: "Sua mensagem foi enviada com sucesso.<br />Entrarei em contato o mais breve possível.<br /><br />Enquanto isso, você pode voltar para a página inicial:",
+        thanks_btn: "Voltar ao início"
+      },
+      hi: {
+        thanks_title: "आपके संदेश के लिए धन्यवाद!",
+        thanks_text: "आपका संदेश सफलतापूर्वक भेजा गया है।<br />मैं जल्द ही आपसे संपर्क करूंगा।<br /><br />इस बीच, आप होमपेज पर वापस जा सकते हैं:",
+        thanks_btn: "होमपेज पर लौटें"
+      },
+      tr: {
+        thanks_title: "Mesajınız için teşekkürler!",
+        thanks_text: "Mesajınız başarıyla gönderildi.<br />En kısa sürede sizinle iletişime geçeceğim.<br /><br />Bu arada ana sayfaya dönebilirsiniz:",
+        thanks_btn: "Ana sayfaya dön"
+      },
+      it: {
+        thanks_title: "Grazie per il tuo messaggio!",
+        thanks_text: "Il tuo messaggio è stato inviato con successo.<br />Ti contatterò il prima possibile.<br /><br />Nel frattempo puoi tornare alla homepage:",
+        thanks_btn: "Torna alla homepage"
+      },
+      pl: {
+        thanks_title: "Dziękujemy za wiadomość!",
+        thanks_text: "Twoja wiadomość została pomyślnie wysłana.<br />Skontaktuję się z Tobą najszybciej jak to możliwe.<br /><br />Tymczasem możesz wrócić na stronę główną:",
+        thanks_btn: "Powrót do strony głównej"
+      },
+      ja: {
+        thanks_title: "メッセージありがとうございます！",
+        thanks_text: "メッセージが正常に送信されました。<br />できるだけ早くご連絡いたします。<br /><br />ホームページに戻ることもできます：",
+        thanks_btn: "ホームへ戻る"
+      },
+      uk: {
+        thanks_title: "Дякуємо за ваше повідомлення!",
+        thanks_text: "Ваше повідомлення успішно надіслано.<br />Я зв'яжуся з вами якнайшвидше.<br /><br />Тим часом ви можете повернутися на головну сторінку:",
+        thanks_btn: "Повернутися на головну"
+      }
+    };
+
+    function translate(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+          if(el.tagName.toLowerCase() === "title") document.title = translations[lang][key];
+        }
+      });
+    }
+    const langSelect = document.getElementById('lang-select');
+    const savedLang = localStorage.getItem('siteLang') || 'ro';
+    langSelect.value = savedLang;
+    translate(savedLang);
+    langSelect.addEventListener('change', e => {
+      translate(e.target.value);
+      localStorage.setItem('siteLang', e.target.value);
+      document.documentElement.lang = e.target.value;
+    });
+  </script>
 </body>
 </html>
