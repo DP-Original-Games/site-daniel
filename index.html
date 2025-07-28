@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Daniel Podaru - Game Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-logo">
+            <img src="logo.png" alt="Logo" />
+        </div>
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#hero" class="active">Home</a>
+        <a href="#videos">Videoclipuri</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <img src="logo.png" alt="Logo DP Games" class="logo-main">
+            <h1>Daniel Podaru - Game Developer</h1>
+            <p>Creez experiențe digitale, UI-uri și lumi de joc memorabile. Gândire de viitor, calitate profesională!</p>
+            <div class="social-bar">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=business@dporiginalgames.eu" target="_blank" title="Trimite email prin Gmail">
+                    <img src="gmail-icon-transparent-free-png.svg" alt="Gmail" class="icon-svg">
+                </a>
+                <a href="https://www.instagram.com/dp.original.games/" title="Instagram" target="_blank">
+                    <img src="Instagram_logo_2022.svg" alt="Instagram" class="icon-svg">
+                </a>
+                <a href="https://www.youtube.com/@DP_Original" title="YouTube" target="_blank">
+                    <img src="yt.svg" alt="YouTube" class="icon-svg">
+                </a>
+                <a href="https://discord.gg/bgwQFSmU" title="Discord" target="_blank">
+                    <img src="ds.svg" alt="Discord" class="icon-svg">
+                </a>
+            </div>
+        </section>
+
+        <!-- VIDEOCLIPURI -->
+        <section class="video-section" id="videos">
+            <div class="video-title">Ultimele videoclipuri</div>
+            <div class="video-list" id="youtube-list"></div>
+        </section>
+
+        <!-- CONTACT -->
+        <div class="contact-wrapper" id="contact">
+            <section class="contact-section">
+                <h2>Contact</h2>
+                <form action="https://formsubmit.co/business@dporiginalgames.eu" method="POST" class="contact-form">
+                    <input type="hidden" name="_next" value="multumesc.html">
+                    <input type="text" name="name" placeholder="Numele tău" required>
+                    <input type="email" name="email" placeholder="Emailul tău" required>
+                    <textarea name="message" placeholder="Mesajul tău..." required></textarea>
+                    <button type="submit">Trimite mesajul</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2025 Daniel Podaru – Game Developer
+    </footer>
+
+    <!-- MUZICA DE FUNDAL -->
+    <audio id="bgmusic" loop>
+        <source src="'Omega' [Emotional Hybrid Orchestra CC-BY] - Scott Buckley.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-player-btn" id="musicBtn" aria-label="Muzică pornită/oprită">
+        <span id="musicIcon">🔈</span>
+    </button>
+
+    <script>
+        // Loader animat
+        window.addEventListener("load", function() {
+            document.getElementById("loader").style.opacity = 0;
+            document.getElementById("loader").style.visibility = "hidden";
+            setTimeout(function(){
+                document.getElementById("loader").remove();
+            }, 800);
+        });
+
+        // Navbar active link
+        const sections = document.querySelectorAll('section, .contact-wrapper, .video-section');
+        const navLinks = document.querySelectorAll('.navbar a');
+        window.onscroll = () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 80;
+                if(pageYOffset >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href').includes(current)) link.classList.add('active');
+            });
+        };
+
+        // Muzica background (loop e deja setat)
+        const bgmusic = document.getElementById('bgmusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgmusic.pause();
+                musicIcon.textContent = '🔈';
+                isPlaying = false;
+            } else {
+                bgmusic.volume = 0.5;
+                bgmusic.play();
+                musicIcon.textContent = '🔊';
+                isPlaying = true;
+            }
+        }
+        musicBtn.onclick = toggleMusic;
+        document.body.addEventListener('click', function onFirstClick() {
+            if (!isPlaying) {
+                toggleMusic();
+                document.body.removeEventListener('click', onFirstClick);
+            }
+        }, { once: true });
+
+        // ------- YOUTUBE VIDEO LIST -------
+        // Adaugă ID-urile aici, poți adăuga câte vrei (ultimele sus)
+        const ytVideos = [
+            {id:"7ZH4G9LmC8g", title:"Unity Inventory Drag & Drop"},
+            {id:"bJrRXfaGz58", title:"Game UI in Unity – Tips & Tricks"},
+            {id:"8ZghDFKyrT4", title:"RPG Character Select Screen"},
+            {id:"uNH8p3RvAGs", title:"Top 5 UI Animation Effects"},
+            {id:"EoGS4yAizbA", title:"Design Fantasy Inventory"},
+        ];
+        const ytContainer = document.getElementById('youtube-list');
+        ytVideos.forEach(video => {
+            ytContainer.innerHTML += `
+                <a class="video-card" href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+                    <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" class="video-thumb">
+                    <div class="video-info">
+                        <span class="yt-icon">▶️</span>
+                        <h3>${video.title}</h3>
+                    </div>
+                </a>`;
+        });
+    </script>
+</body>
+</html>

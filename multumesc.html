@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Mulțumesc pentru mesaj!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: #fff;
+            background: url('fantasy_landscape_blur_soft.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(30, 30, 30, 0.50);
+            z-index: 0;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 46px 28px 38px 28px;
+            width: 96vw;
+            max-width: 430px;
+            background: rgba(30,30,30,0.93);
+            border-radius: 24px;
+            box-shadow: 0 2px 22px 0 rgba(0,0,0,0.18);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-main {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            margin-bottom: 18px;
+            margin-top: 0;
+            display: block;
+            background: rgba(0,0,0,0.4);
+            border: 3px solid #fd9e2e;
+            box-shadow: 0 0 0 6px rgba(253,158,46,0.11),
+                        0 2px 12px 0 rgba(0,0,0,0.12);
+            transition: box-shadow 0.28s, transform 0.28s;
+        }
+        .logo-main:hover {
+            box-shadow: 0 0 24px 7px #fd9e2e, 0 2px 12px 0 rgba(0,0,0,0.14);
+            transform: scale(1.06) rotate(-1.5deg);
+        }
+        h1 {
+            color: #fd9e2e;
+            margin-bottom: 14px;
+            font-size: 2.1em;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.08em;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+        .btn-back {
+            background: #fd9e2e;
+            color: #fff;
+            font-size: 1.12em;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.18s, color 0.18s, transform 0.18s;
+            box-shadow: 0 1px 8px 0 rgba(0,0,0,0.12);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-back:hover {
+            background: #ffb554;
+            color: #232323;
+            transform: scale(1.07);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 8px 22px 8px;
+                max-width: 98vw;
+            }
+            h1 {
+                font-size: 1.4em;
+            }
+            .logo-main {
+                width: 56px;
+                height: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo DP Games" class="logo-main">
+        <h1>Mulțumesc pentru mesaj!</h1>
+        <p>Mesajul tău a fost trimis cu succes.<br>
+        Te voi contacta în cel mai scurt timp posibil.<br><br>
+        Între timp, poți reveni pe pagina principală:</p>
+        <a class="btn-back" href="index.html">Înapoi la homepage</a>
+    </div>
+</body>
+</html>
