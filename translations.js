@@ -33,6 +33,7 @@ const translations = {
     thank_you_title: "Mulțumim pentru achiziție!",
     thank_you_msg: "Plata ta a fost procesată cu succes.<br>Apasă pe butonul de mai jos pentru a descărca scriptul tău:",
     download_btn: "Descarcă scriptul",
+    redirecting_msg: "Redirecționare către pagina principală..."
     contact_support: "Dacă ai probleme la descărcare, scrie la",
     download_copyright: "&copy; 2025 DP Original Games. Toate drepturile rezervate.",
     copyright: "© 2025 Daniel Podaru – Toate drepturile rezervate."
@@ -68,6 +69,7 @@ const translations = {
     thank_you_title: "Thank you for your purchase!",
     thank_you_msg: "Your payment was successful.<br>Click the button below to download your script:",
     download_btn: "Download Script",
+    redirecting_msg: "Redirecting to main page..."
     contact_support: "If you have any issues, contact us at",
     download_copyright: "&copy; 2025 DP Original Games. All rights reserved.",
     copyright: "© 2025 Daniel Podaru – All rights reserved."
@@ -103,6 +105,7 @@ const translations = {
     thank_you_title: "¡Gracias por su compra!",
     thank_you_msg: "El pago se ha procesado con éxito.<br>Haz clic en el botón de abajo para descargar tu script:",
     download_btn: "Descargar script",
+    redirecting_msg: "Redirigiendo a la página principal..."
     contact_support: "Si tienes problemas, contáctanos en",
     download_copyright: "&copy; 2025 DP Original Games. Todos los derechos reservados.",
     copyright: "© 2025 Daniel Podaru – Todos los derechos reservados."
@@ -138,6 +141,7 @@ const translations = {
     thank_you_title: "Merci pour votre achat !",
     thank_you_msg: "Votre paiement a été effectué avec succès.<br>Cliquez sur le bouton ci-dessous pour télécharger votre script :",
     download_btn: "Télécharger le script",
+    redirecting_msg: "Redirection vers la page principale..."
     contact_support: "Si vous avez des problèmes, contactez-nous à",
     download_copyright: "&copy; 2025 DP Original Games. Tous droits réservés.",
     copyright: "© 2025 Daniel Podaru – Tous droits réservés."
@@ -173,6 +177,7 @@ const translations = {
     thank_you_title: "Vielen Dank für Ihren Kauf!",
     thank_you_msg: "Ihre Zahlung war erfolgreich.<br>Klicken Sie unten, um das Script herunterzuladen:",
     download_btn: "Script herunterladen",
+    redirecting_msg: "Weiterleitung zur Hauptseite..."
     contact_support: "Bei Problemen kontaktieren Sie uns unter",
     download_copyright: "&copy; 2025 DP Original Games. Alle Rechte vorbehalten.",
     copyright: "© 2025 Daniel Podaru – Alle Rechte vorbehalten."
@@ -208,6 +213,7 @@ const translations = {
     thank_you_title: "Спасибо за покупку!",
     thank_you_msg: "Платеж прошёл успешно.<br>Нажмите кнопку ниже, чтобы скачать скрипт:",
     download_btn: "Скачать скрипт",
+    redirecting_msg: "Перенаправление на главную страницу..."
     contact_support: "Если возникли проблемы, напишите нам на",
     download_copyright: "&copy; 2025 DP Original Games. Все права защищены.",
     copyright: "© 2025 Daniel Podaru – Все права защищены."
@@ -243,6 +249,7 @@ const translations = {
     thank_you_title: "感谢您的购买！",
     thank_you_msg: "您的付款已成功处理。<br>点击下方按钮下载脚本：",
     download_btn: "下载脚本",
+    redirecting_msg: "正在跳转到主页..."
     contact_support: "如有问题，请联系：",
     download_copyright: "&copy; 2025 DP Original Games. 保留所有权利。",
     copyright: "© 2025 Daniel Podaru – 保留所有权利。"
@@ -278,6 +285,7 @@ const translations = {
     thank_you_title: "شكرًا لشرائك!",
     thank_you_msg: "تمت معالجة الدفع بنجاح.<br>انقر على الزر أدناه لتنزيل السكريبت:",
     download_btn: "تنزيل السكريبت",
+    redirecting_msg: "يتم إعادة التوجيه إلى الصفحة الرئيسية..."
     contact_support: "إذا كان لديك أي مشكلة، اتصل بنا على",
     download_copyright: "&copy; 2025 DP Original Games. جميع الحقوق محفوظة.",
     copyright: "© 2025 دانيال بودارو – جميع الحقوق محفوظة."
@@ -313,6 +321,7 @@ const translations = {
     thank_you_title: "Obrigado pela sua compra!",
     thank_you_msg: "Seu pagamento foi bem-sucedido.<br>Clique no botão abaixo para baixar o script:",
     download_btn: "Baixar script",
+    redirecting_msg: "Redirecionando para a página principal..."
     contact_support: "Se tiver problemas, contacte-nos em",
     download_copyright: "&copy; 2025 DP Original Games. Todos os direitos reservados.",
     copyright: "© 2025 Daniel Podaru – Todos os direitos rezervados."
@@ -348,6 +357,7 @@ const translations = {
     thank_you_title: "खरीद के लिए धन्यवाद!",
     thank_you_msg: "आपका भुगतान सफल रहा।<br>नीचे दिए गए बटन से स्क्रिप्ट डाउनलोड करें:",
     download_btn: "स्क्रिप्ट डाउनलोड करें",
+    redirecting_msg: "मुख्य पृष्ठ पर पुनर्निर्देशित किया जा रहा है..."
     contact_support: "यदि डाउनलोड में समस्या है, संपर्क करें:",
     download_copyright: "&copy; 2025 DP Original Games. सर्वाधिकार सुरक्षित.",
     copyright: "© 2025 डैनियल पोदारु – सर्वाधिकार सुरक्षित."
@@ -383,6 +393,7 @@ const translations = {
     thank_you_title: "Satın aldığınız için teşekkürler!",
     thank_you_msg: "Ödemeniz başarıyla alındı.<br>Scripti indirmek için aşağıdaki butona tıklayın:",
     download_btn: "Scripti indir",
+    redirecting_msg: "Ana sayfaya yönlendiriliyor..."
     contact_support: "Bir sorun olursa bize ulaşın:",
     download_copyright: "&copy; 2025 DP Original Games. Tüm hakları saklıdır.",
     copyright: "© 2025 Daniel Podaru – Tüm hakları saklıdır."
@@ -418,6 +429,7 @@ const translations = {
     thank_you_title: "Grazie per l'acquisto!",
     thank_you_msg: "Il pagamento è andato a buon fine.<br>Clicca sul pulsante in basso per scaricare lo script:",
     download_btn: "Scarica script",
+    redirecting_msg: "Reindirizzamento alla pagina principale..."
     contact_support: "Se hai problemi, contattaci a",
     download_copyright: "&copy; 2025 DP Original Games. Tutti i diritti riservati.",
     copyright: "© 2025 Daniel Podaru – Tutti i diritti riservati."
@@ -453,6 +465,7 @@ const translations = {
     thank_you_title: "Dziękujemy za zakup!",
     thank_you_msg: "Twoja płatność zakończyła się sukcesem.<br>Kliknij przycisk poniżej, aby pobrać skrypt:",
     download_btn: "Pobierz skrypt",
+    redirecting_msg: "Przekierowanie na stronę główną..."
     contact_support: "W razie problemów napisz na",
     download_copyright: "&copy; 2025 DP Original Games. Wszelkie prawa zastrzeżone.",
     copyright: "© 2025 Daniel Podaru – Wszelkie prawa zastrzeżone."
@@ -488,6 +501,7 @@ const translations = {
     thank_you_title: "ご購入ありがとうございます！",
     thank_you_msg: "お支払いが完了しました。<br>下のボタンからスクリプトをダウンロードしてください：",
     download_btn: "スクリプトをダウンロード",
+    redirecting_msg: "メインページにリダイレクトしています..."
     contact_support: "問題がある場合は次までご連絡ください：",
     download_copyright: "&copy; 2025 DP Original Games. 無断転載を禁じます。",
     copyright: "© 2025 Daniel Podaru – 無断転載を禁じます。"
@@ -523,6 +537,7 @@ const translations = {
     thank_you_title: "Дякуємо за покупку!",
     thank_you_msg: "Ваш платіж успішний.<br>Натисніть кнопку нижче, щоб завантажити скрипт:",
     download_btn: "Завантажити скрипт",
+    redirecting_msg: "Перенаправлення на головну сторінку..."
     contact_support: "Якщо виникли проблеми, пишіть на",
     download_copyright: "&copy; 2025 DP Original Games. Всі права захищені.",
     copyright: "© 2025 Daniel Podaru – Всі права захищені."
