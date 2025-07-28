@@ -36,7 +36,7 @@ const translations = {
     redirecting_msg: "Redirecționare către pagina principală..."
     contact_support: "Dacă ai probleme la descărcare, scrie la",
     download_copyright: "&copy; 2025 DP Original Games. Toate drepturile rezervate.",
-    copyright: "© 2025 Daniel Podaru – Toate drepturile rezervate."
+    copyright: "© 2025 DP Original Games. – Toate drepturile rezervate."
   },
   en: {
     title: "Daniel Podaru - Game Developer",
@@ -108,7 +108,7 @@ const translations = {
     redirecting_msg: "Redirigiendo a la página principal..."
     contact_support: "Si tienes problemas, contáctanos en",
     download_copyright: "&copy; 2025 DP Original Games. Todos los derechos reservados.",
-    copyright: "© 2025 Daniel Podaru – Todos los derechos reservados."
+    copyright: "© 2025 DP Original Games. – Todos los derechos reservados."
   },
   fr: {
     title: "Daniel Podaru - Développeur de Jeux",
@@ -144,7 +144,7 @@ const translations = {
     redirecting_msg: "Redirection vers la page principale..."
     contact_support: "Si vous avez des problèmes, contactez-nous à",
     download_copyright: "&copy; 2025 DP Original Games. Tous droits réservés.",
-    copyright: "© 2025 Daniel Podaru – Tous droits réservés."
+    copyright: "© 2025 DP Original Games. – Tous droits réservés."
   },
   de: {
     title: "Daniel Podaru – Spieleentwickler",
@@ -180,7 +180,7 @@ const translations = {
     redirecting_msg: "Weiterleitung zur Hauptseite..."
     contact_support: "Bei Problemen kontaktieren Sie uns unter",
     download_copyright: "&copy; 2025 DP Original Games. Alle Rechte vorbehalten.",
-    copyright: "© 2025 Daniel Podaru – Alle Rechte vorbehalten."
+    copyright: "© 2025 DP Original Games. – Alle Rechte vorbehalten."
   },
   ru: {
     title: "Даниэль Подару – Разработчик игр",
@@ -216,7 +216,7 @@ const translations = {
     redirecting_msg: "Перенаправление на главную страницу..."
     contact_support: "Если возникли проблемы, напишите нам на",
     download_copyright: "&copy; 2025 DP Original Games. Все права защищены.",
-    copyright: "© 2025 Daniel Podaru – Все права защищены."
+    copyright: "© 2025 DP Original Games. – Все права защищены."
   },
   zh: {
     title: "丹尼尔·波达鲁 - 游戏开发者",
@@ -252,7 +252,7 @@ const translations = {
     redirecting_msg: "正在跳转到主页..."
     contact_support: "如有问题，请联系：",
     download_copyright: "&copy; 2025 DP Original Games. 保留所有权利。",
-    copyright: "© 2025 Daniel Podaru – 保留所有权利。"
+    copyright: "© 2025 DP Original Games. – 保留所有权利。"
   },
   ar: {
     title: "دانيال بودارو - مطور ألعاب",
@@ -324,7 +324,7 @@ const translations = {
     redirecting_msg: "Redirecionando para a página principal..."
     contact_support: "Se tiver problemas, contacte-nos em",
     download_copyright: "&copy; 2025 DP Original Games. Todos os direitos reservados.",
-    copyright: "© 2025 Daniel Podaru – Todos os direitos rezervados."
+    copyright: "© 2025 DP Original Games. – Todos os direitos rezervados."
   },
   hi: {
     title: "डैनियल पोदारु - गेम डेवलपर",
@@ -396,7 +396,7 @@ const translations = {
     redirecting_msg: "Ana sayfaya yönlendiriliyor..."
     contact_support: "Bir sorun olursa bize ulaşın:",
     download_copyright: "&copy; 2025 DP Original Games. Tüm hakları saklıdır.",
-    copyright: "© 2025 Daniel Podaru – Tüm hakları saklıdır."
+    copyright: "© 2025 DP Original Games. – Tüm hakları saklıdır."
   },
   it: {
     title: "Daniel Podaru - Sviluppatore di Giochi",
@@ -432,7 +432,7 @@ const translations = {
     redirecting_msg: "Reindirizzamento alla pagina principale..."
     contact_support: "Se hai problemi, contattaci a",
     download_copyright: "&copy; 2025 DP Original Games. Tutti i diritti riservati.",
-    copyright: "© 2025 Daniel Podaru – Tutti i diritti riservati."
+    copyright: "© 2025 DP Original Games. – Tutti i diritti riservati."
   },
   pl: {
     title: "Daniel Podaru - Twórca Gier",
@@ -468,7 +468,7 @@ const translations = {
     redirecting_msg: "Przekierowanie na stronę główną..."
     contact_support: "W razie problemów napisz na",
     download_copyright: "&copy; 2025 DP Original Games. Wszelkie prawa zastrzeżone.",
-    copyright: "© 2025 Daniel Podaru – Wszelkie prawa zastrzeżone."
+    copyright: "© 2025 DP Original Games. – Wszelkie prawa zastrzeżone."
   },
   ja: {
     title: "ダニエル・ポダル - ゲーム開発者",
@@ -504,7 +504,7 @@ const translations = {
     redirecting_msg: "メインページにリダイレクトしています..."
     contact_support: "問題がある場合は次までご連絡ください：",
     download_copyright: "&copy; 2025 DP Original Games. 無断転載を禁じます。",
-    copyright: "© 2025 Daniel Podaru – 無断転載を禁じます。"
+    copyright: "© 2025 DP Original Games. – 無断転載を禁じます。"
   },
   uk: {
     title: "Даніель Подару – Розробник ігор",
@@ -540,7 +540,7 @@ const translations = {
     redirecting_msg: "Перенаправлення на головну сторінку..."
     contact_support: "Якщо виникли проблеми, пишіть на",
     download_copyright: "&copy; 2025 DP Original Games. Всі права захищені.",
-    copyright: "© 2025 Daniel Podaru – Всі права захищені."
+    copyright: "© 2025 DP Original Games. – Всі права захищені."
   }
 };
 
