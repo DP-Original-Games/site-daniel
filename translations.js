@@ -72,7 +72,7 @@ const translations = {
     redirecting_msg: "Redirecting to main page..."
     contact_support: "If you have any issues, contact us at",
     download_copyright: "&copy; 2025 DP Original Games. All rights reserved.",
-    copyright: "© 2025 DP Original Games. – All rights reserved."
+    copyright: "© 2025 DP Original Games – All rights reserved."
   },
   es: {
     title: "Daniel Podaru - Desarrollador de Juegos",
