@@ -296,36 +296,9 @@ footer {
     z-index: 10;
 }
 
-/* MUZICA */
-.music-player-btn {
-    position: fixed;
-    bottom: 38px;
-    right: 42px;
-    z-index: 999;
-    background: rgba(24,24,24,0.92);
-    color: #fd9e2e;
-    border: none;
-    outline: none;
-    font-size: 2.4em;
-    border-radius: 50%;
-    width: 66px;
-    height: 66px;
-    box-shadow: 0 3px 20px 0 rgba(0,0,0,0.21);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s, color 0.15s, transform 0.15s;
-}
-.music-player-btn:hover {
-    background: #fd9e2e;
-    color: #191919;
-    transform: scale(1.08);
-}
 
 @media (max-width: 800px) {
     .container { padding: 10px 0 0 0; }
     .contact-section { max-width: 97vw; padding: 18px 2vw 34px 2vw; }
     .contact-section h2 { font-size: 1.4em; letter-spacing: 4px; }
-    .music-player-btn { bottom: 16px; right: 10px; width: 46px; height: 46px; font-size: 1.3em; }
 }
