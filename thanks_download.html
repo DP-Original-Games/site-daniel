@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Descarcă scriptul tău | DP Original Games</title>
+  <title data-i18n="thank_you_title">Mulțumim pentru achiziție!</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -53,27 +53,198 @@
       display: block;
       margin-left: auto; margin-right: auto;
     }
+    .lang-wrap {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+      width: 100vw;
+      max-width: 420px;
+    }
+    .lang-wrap select {
+      padding:7px 24px;
+      font-size:1.09em;
+      border-radius:8px;
+      background:#232;
+      color:#fd9e2e;
+      border:2px solid #fd9e2e;
+      outline: none;
+      font-weight: 700;
+      margin-top: 12px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
     @media (max-width:500px) {
       .download-box { max-width: 98vw; padding: 20px 4vw; }
       .download-btn { font-size: 1.05em; padding: 13px 16vw; }
       .logo-main { width: 54px; height: 54px; }
+      .lang-wrap select { margin-right: 0; width: 92vw; margin-left: 0; }
+      .lang-wrap { justify-content: center; }
     }
   </style>
 </head>
 <body>
+  <div class="lang-wrap">
+    <select id="lang-switcher">
+      <option value="ro">Română</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="it">Italiano</option>
+      <option value="ru">Русский</option>
+      <option value="uk">Українська</option>
+      <option value="tr">Türkçe</option>
+      <option value="ar">العربية</option>
+      <option value="zh">中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="pt">Português</option>
+      <option value="pl">Polski</option>
+    </select>
+  </div>
   <div class="download-box">
     <img src="logo.png" alt="Logo DP Games" class="logo-main" />
-    <h2>Mulțumim pentru achiziție!</h2>
-    <p>Plata ta a fost procesată cu succes.<br>
-      Apasă pe butonul de mai jos pentru a descărca scriptul tău:</p>
-    <a class="download-btn" href="FirstPersonMovement.cs" download>Descarcă scriptul</a>
+    <h2 data-i18n="thank_you_title">Mulțumim pentru achiziție!</h2>
+    <p data-i18n="thank_you_msg">
+      Plata ta a fost procesată cu succes.<br>
+      Apasă pe butonul de mai jos pentru a descărca scriptul tău:
+    </p>
+    <a class="download-btn" data-i18n="download_btn" href="FirstPersonMovement.cs" download>Descarcă scriptul</a>
     <p style="font-size:0.93em;color:#ffb554;margin-top:20px;">
-      Dacă ai probleme la descărcare, scrie la<br>
+      <span data-i18n="contact_support">Dacă ai probleme la descărcare, scrie la</span><br>
       <a href="mailto:business@dporiginalgames.eu" style="color:#fd9e2e;">business@dporiginalgames.eu</a>
     </p>
-    <div style="margin-top:18px;font-size:0.93em;color:#aaa;">
+    <div style="margin-top:18px;font-size:0.93em;color:#aaa;" data-i18n="copyright">
       &copy; 2025 DP Original Games. Toate drepturile rezervate.
     </div>
   </div>
+  <script>
+    const translations = {
+      ro: {
+        thank_you_title: "Mulțumim pentru achiziție!",
+        thank_you_msg: "Plata ta a fost procesată cu succes.<br>Apasă pe butonul de mai jos pentru a descărca scriptul tău:",
+        download_btn: "Descarcă scriptul",
+        contact_support: "Dacă ai probleme la descărcare, scrie la",
+        copyright: "&copy; 2025 DP Original Games. Toate drepturile rezervate."
+      },
+      en: {
+        thank_you_title: "Thank you for your purchase!",
+        thank_you_msg: "Your payment was successful.<br>Click the button below to download your script:",
+        download_btn: "Download Script",
+        contact_support: "If you have any issues, contact us at",
+        copyright: "&copy; 2025 DP Original Games. All rights reserved."
+      },
+      fr: {
+        thank_you_title: "Merci pour votre achat !",
+        thank_you_msg: "Votre paiement a été effectué avec succès.<br>Cliquez sur le bouton ci-dessous pour télécharger votre script :",
+        download_btn: "Télécharger le script",
+        contact_support: "Si vous avez des problèmes, contactez-nous à",
+        copyright: "&copy; 2025 DP Original Games. Tous droits réservés."
+      },
+      es: {
+        thank_you_title: "¡Gracias por su compra!",
+        thank_you_msg: "El pago se ha procesado con éxito.<br>Haz clic en el botón de abajo para descargar tu script:",
+        download_btn: "Descargar script",
+        contact_support: "Si tienes problemas, contáctanos en",
+        copyright: "&copy; 2025 DP Original Games. Todos los derechos reservados."
+      },
+      de: {
+        thank_you_title: "Vielen Dank für Ihren Kauf!",
+        thank_you_msg: "Ihre Zahlung war erfolgreich.<br>Klicken Sie unten, um das Script herunterzuladen:",
+        download_btn: "Script herunterladen",
+        contact_support: "Bei Problemen kontaktieren Sie uns unter",
+        copyright: "&copy; 2025 DP Original Games. Alle Rechte vorbehalten."
+      },
+      it: {
+        thank_you_title: "Grazie per l'acquisto!",
+        thank_you_msg: "Il pagamento è andato a buon fine.<br>Clicca sul pulsante in basso per scaricare lo script:",
+        download_btn: "Scarica script",
+        contact_support: "Se hai problemi, contattaci a",
+        copyright: "&copy; 2025 DP Original Games. Tutti i diritti riservati."
+      },
+      ru: {
+        thank_you_title: "Спасибо за покупку!",
+        thank_you_msg: "Платеж прошёл успешно.<br>Нажмите кнопку ниже, чтобы скачать скрипт:",
+        download_btn: "Скачать скрипт",
+        contact_support: "Если возникли проблемы, напишите нам на",
+        copyright: "&copy; 2025 DP Original Games. Все права защищены."
+      },
+      uk: {
+        thank_you_title: "Дякуємо за покупку!",
+        thank_you_msg: "Ваш платіж успішний.<br>Натисніть кнопку нижче, щоб завантажити скрипт:",
+        download_btn: "Завантажити скрипт",
+        contact_support: "Якщо виникли проблеми, пишіть на",
+        copyright: "&copy; 2025 DP Original Games. Всі права захищені."
+      },
+      tr: {
+        thank_you_title: "Satın aldığınız için teşekkürler!",
+        thank_you_msg: "Ödemeniz başarıyla alındı.<br>Scripti indirmek için aşağıdaki butona tıklayın:",
+        download_btn: "Scripti indir",
+        contact_support: "Bir sorun olursa bize ulaşın:",
+        copyright: "&copy; 2025 DP Original Games. Tüm hakları saklıdır."
+      },
+      ar: {
+        thank_you_title: "شكرًا لشرائك!",
+        thank_you_msg: "تمت معالجة الدفع بنجاح.<br>انقر على الزر أدناه لتنزيل السكريبت:",
+        download_btn: "تنزيل السكريبت",
+        contact_support: "إذا كان لديك أي مشكلة، اتصل بنا على",
+        copyright: "&copy; 2025 DP Original Games. جميع الحقوق محفوظة."
+      },
+      zh: {
+        thank_you_title: "感谢您的购买！",
+        thank_you_msg: "您的付款已成功处理。<br>点击下方按钮下载脚本：",
+        download_btn: "下载脚本",
+        contact_support: "如有问题，请联系：",
+        copyright: "&copy; 2025 DP Original Games. 保留所有权利。"
+      },
+      ja: {
+        thank_you_title: "ご購入ありがとうございます！",
+        thank_you_msg: "お支払いが完了しました。<br>下のボタンからスクリプトをダウンロードしてください：",
+        download_btn: "スクリプトをダウンロード",
+        contact_support: "問題がある場合は次までご連絡ください：",
+        copyright: "&copy; 2025 DP Original Games. 無断転載を禁じます。"
+      },
+      ko: {
+        thank_you_title: "구매해 주셔서 감사합니다!",
+        thank_you_msg: "결제가 성공적으로 완료되었습니다.<br>아래 버튼을 클릭하여 스크립트를 다운로드하세요:",
+        download_btn: "스크립트 다운로드",
+        contact_support: "문제가 있으면 아래로 문의하세요:",
+        copyright: "&copy; 2025 DP Original Games. 모든 권리 보유."
+      },
+      pt: {
+        thank_you_title: "Obrigado pela sua compra!",
+        thank_you_msg: "Seu pagamento foi bem-sucedido.<br>Clique no botão abaixo para baixar o script:",
+        download_btn: "Baixar script",
+        contact_support: "Se tiver problemas, contacte-nos em",
+        copyright: "&copy; 2025 DP Original Games. Todos os direitos reservados."
+      },
+      pl: {
+        thank_you_title: "Dziękujemy za zakup!",
+        thank_you_msg: "Twoja płatność zakończyła się sukcesem.<br>Kliknij przycisk poniżej, aby pobrać skrypt:",
+        download_btn: "Pobierz skrypt",
+        contact_support: "W razie problemów napisz na",
+        copyright: "&copy; 2025 DP Original Games. Wszelkie prawa zastrzeżone."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    const sel = document.getElementById('lang-switcher');
+    sel.value = localStorage.getItem('lang') || 'ro';
+    setLanguage(sel.value);
+
+    sel.onchange = function() {
+      setLanguage(this.value);
+    };
+  </script>
 </body>
 </html>
