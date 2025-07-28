@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Descarcă scriptul tău | DP Original Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: url('fantasy_landscape_blur_soft.png') center center/cover no-repeat fixed;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #fff; text-align: center;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    .download-box {
+      background: rgba(30,30,30,0.97);
+      border-radius: 20px;
+      box-shadow: 0 4px 22px #0007;
+      padding: 40px 18px;
+      margin: 20px auto;
+      max-width: 410px;
+      animation: fadein 0.7s cubic-bezier(.5,.01,.2,1);
+    }
+    @keyframes fadein { from { opacity:0; transform:translateY(38px);} to{opacity:1;transform:none;} }
+    .download-btn {
+      background: #fd9e2e;
+      color: #232323;
+      font-size: 1.22em;
+      font-weight: 800;
+      padding: 16px 44px;
+      border: none;
+      border-radius: 14px;
+      text-decoration: none;
+      margin: 24px auto 0 auto;
+      display: inline-block;
+      box-shadow: 0 2px 20px #fd9e2e32;
+      transition: background .15s, color .15s, transform .13s;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background: #ffb554;
+      color: #232323;
+      transform: scale(1.05);
+    }
+    .logo-main {
+      width: 72px; height: 72px;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.4);
+      border: 3px solid #fd9e2e;
+      box-shadow: 0 0 0 8px rgba(253,158,46,0.07), 0 3px 16px rgba(0,0,0,0.12);
+      display: block;
+      margin-left: auto; margin-right: auto;
+    }
+    @media (max-width:500px) {
+      .download-box { max-width: 98vw; padding: 20px 4vw; }
+      .download-btn { font-size: 1.05em; padding: 13px 16vw; }
+      .logo-main { width: 54px; height: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="download-box">
+    <img src="logo.png" alt="Logo DP Games" class="logo-main" />
+    <h2>Mulțumim pentru achiziție!</h2>
+    <p>Plata ta a fost procesată cu succes.<br>
+      Apasă pe butonul de mai jos pentru a descărca scriptul tău:</p>
+    <a class="download-btn" href="FirstPersonMovement.cs" download>Descarcă scriptul</a>
+    <p style="font-size:0.93em;color:#ffb554;margin-top:20px;">
+      Dacă ai probleme la descărcare, scrie la<br>
+      <a href="mailto:business@dporiginalgames.eu" style="color:#fd9e2e;">business@dporiginalgames.eu</a>
+    </p>
+    <div style="margin-top:18px;font-size:0.93em;color:#aaa;">
+      &copy; 2025 DP Original Games. Toate drepturile rezervate.
+    </div>
+  </div>
+</body>
+</html>
